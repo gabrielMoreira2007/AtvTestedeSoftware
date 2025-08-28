@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Página de Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(120deg, #e0e7ff 0%, #f2f2f2 100%);
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 350px;
+            margin: 80px auto;
+            background: #fff;
+            padding: 30px 40px;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+        }
+        .login-form label {
+            font-weight: 500;
+            color: #1e293b;
+            margin-bottom: 6px;
+            display: block;
+            letter-spacing: 0.5px;
+        }
+        .login-form input[type="text"],
+        .login-form input[type="password"] {
+            width: 100%;
+            padding: 10px 12px;
+            margin-bottom: 18px;
+            border: 1px solid #bfc8e2;
+            border-radius: 8px;
+            font-size: 15px;
+            background: #f8fafc;
+            transition: border 0.2s;
+        }
+        .login-form input[type="text"]:focus,
+        .login-form input[type="password"]:focus {
+            border: 1.5px solid #2563eb;
+            outline: none;
+            background: #fff;
+        }
+        .login-form button {
+            width: 100%;
+            background: linear-gradient(90deg, #2563eb 0%, #1e40af 100%);
+            color: #fff;
+            border: none;
+            padding: 12px 0;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(37,99,235,0.13);
+            transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+            margin-top: 6px;
+        }
+        .login-form button:hover {
+            background: linear-gradient(90deg, #1e40af 0%, #2563eb 100%);
+            transform: translateY(-2px) scale(1.03);
+            box-shadow: 0 4px 16px rgba(37,99,235,0.18);
+        }
+        .cards-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 32px;
+            justify-content: center;
+            margin-top: 40px;
+        }
+        .card {
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 6px 24px rgba(0,0,0,0.10);
+            padding: 32px 24px 24px 24px;
+            width: 270px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 18px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            position: relative;
+        }
+        .card:hover {
+            transform: translateY(-6px) scale(1.03);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.13);
+        }
+        .nome {
+            font-weight: 700;
+            font-size: 22px;
+            color: #22223b;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+            text-align: center;
+        }
+        .links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+        }
+        .link-btn {
+            background: linear-gradient(90deg, #2563eb 0%, #1e40af 100%);
+            color: #fff;
+            border: none;
+            padding: 10px 22px;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 500;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(37,99,235,0.18);
+            transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .link-btn:hover {
+            background: linear-gradient(90deg, #1e40af 0%, #2563eb 100%);
+            transform: translateY(-2px) scale(1.04);
+            box-shadow: 0 4px 16px rgba(37,99,235,0.22);
+            text-decoration: none;
+        }
+        h2 {
+            text-align: center;
+            color: #1e293b;
+            letter-spacing: 1px;
+        }
+        @media (max-width: 900px) {
+            .cards-container {
+                gap: 20px;
+            }
+            .card {
+                width: 90vw;
+                max-width: 340px;
+            }
+        }
+        @media (max-width: 600px) {
+            .container {
+                max-width: 98vw;
+                margin: 30px 1vw;
+                padding: 18px 6vw;
+                border-radius: 10px;
+            }
+            .cards-container {
+                flex-direction: column;
+                gap: 18px;
+                margin-top: 24px;
+                align-items: center;
+            }
+            .card {
+                width: 96vw;
+                max-width: 370px;
+                padding: 22px 10px 18px 10px;
+                border-radius: 12px;
+            }
+            h2 {
+                font-size: 1.3em;
+            }
+        }
+        @media (max-width: 400px) {
+            .container {
+                padding: 10px 2vw;
+            }
+            .card {
+                width: 98vw;
+                max-width: 99vw;
+                padding: 12px 2vw 12px 2vw;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="login-page" class="container">
+        <h2>Login</h2>
+        <form id="login-form" class="login-form">
+            <label for="usuario">Usuário:</label>
+            <input type="text" id="usuario" required>
+            <label for="senha">Senha:</label>
+            <input type="password" id="senha" required>
+            <button type="submit">Entrar</button>
+        </form>
+    </div>
+
+    <div id="cards-page" style="display:none;">
+        <h2>Informações das Pessoas</h2>
+        <div class="cards-container">
+            <div class="card">
+                <div class="nome">Cibely</div>
+                <div class="links">
+                    <a class="link-btn" href="https://github.com/CibelySantos" target="_blank">GitHub</a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="nome">Gabriel Moreira</div>
+                <div class="links">
+                    <a class="link-btn" href="https://www.linkedin.com/in/gabriel-gon%C3%A7alves-3b75a92b7/" target="_blank">LinkedIn</a>
+                    <a class="link-btn" href="https://github.com/gabrielMoreira2007" target="_blank">GitHub</a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="nome">Julia Fortunato</div>
+                <div class="links">
+                    <a class="link-btn" href="https://www.linkedin.com/in/julia-fortunato-709037366/" target="_blank">LinkedIn</a>
+                    <a class="link-btn" href="https://github.com/juliafortunat24" target="_blank">GitHub</a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="nome">Kauã</div>
+                <div class="links">
+                    <a class="link-btn" href="https://www.linkedin.com/in/kau%C3%A3-albuquerque-almeida-5305a92b7/" target="_blank">LinkedIn</a>
+                    <a class="link-btn" href="https://github.com/KauaAlbuquerqueAlmeida" target="_blank">GitHub</a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="nome">Matheus</div>
+                <div class="links">
+                    <a class="link-btn" href="https://www.linkedin.com/in/matheus-arantes-villar-b78248282/" target="_blank">LinkedIn</a>
+                    <a class="link-btn" href="https://github.com/Matheusvillar" target="_blank">GitHub</a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="nome">Murilo Ferreira</div>
+                <div class="links">
+                    <a class="link-btn" href="https://github.com/muriloffsan" target="_blank">GitHub</a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="nome">Pedro Zocatelli</div>
+                <div class="links">
+                    <a class="link-btn" href="https://www.linkedin.com/in/pedro-zocatelli-b4858437a/" target="_blank">LinkedIn</a>
+                    <a class="link-btn" href="https://github.com/PeZocatelli" target="_blank">GitHub</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const loginForm = document.getElementById('login-form');
+        const loginPage = document.getElementById('login-page');
+        const cardsPage = document.getElementById('cards-page');
+
+        loginForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Qualquer usuário/senha funciona
+            loginPage.style.display = 'none';
+            cardsPage.style.display = 'block';
+        });
+    </script>
+</body>
+</html>
